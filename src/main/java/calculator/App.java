@@ -62,10 +62,7 @@ public class App {
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             if(sc.next().equals("inquiry")){
-                for(int i=0;i<index;i++){
-                    System.out.print(cal.Getter(i)+" "); //Getter 메서드 사용
-                }
-                System.out.println();
+                cal.inquiryResults();
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");

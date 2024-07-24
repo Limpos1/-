@@ -54,4 +54,11 @@ public class Calculator {
         }
         list.remove(list.size()-1);
     }
+
+    public void inquiryResults(){
+        for(int i : list){
+            System.out.print(i+" ");
+        }
+        System.out.println();
+    }
 }
