@@ -8,9 +8,8 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-        int a,b;
-        List<Integer> list = new ArrayList<>();
-        int index=0;
+        Calculator cal = new Calculator();
+        int a,b,result;
         char operator;
         Scanner sc = new Scanner(System.in);
         while(true){
@@ -28,53 +27,26 @@ public class App {
             System.out.print("사칙연산 기호를 입력하세요: ");
             operator = sc.next().charAt(0);
 
-            int result = 0;
-            switch (operator){
-                case '+':
-                {
-                    result = a + b;
-                    break;
-                }
-                case '-':
-                {
-                    result = a - b;
-                    break;
-                }
-                case '*':
-                {
-                    result = a * b;
-                    break;
-                }
-                case '/':
-                {
-                    if(b==0){
-                        System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                        continue;
-                    }
-                    else
-                        result = a / b;
-                    break;
-                }
-                default:{
-                    System.out.println("사칙 연산 기호가 아닙니다 (+, -, *, /) 중 하나를 입력하세요");
-                    continue;
-                }
+            try{
+                result = cal.calculate(a,b,operator);
+            }catch (Exception e){ // calculate 함수에서 에러 발생 시 여기서 받아 처리한다.
+                System.out.println(e.getMessage()); // calculate 함수에서 작성한 에러 메시지를 출력한다.
+                continue;
             }
             
             System.out.println("결과: "+result);
-            list.add(result);
 
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             if(sc.next().equals("remove")){
-                for(int i=0; i<list.size()-1; i++){
-                    list.set(i,list.get(i+1));
+                for(int i=0; i<cal.list.size()-1; i++){
+                    cal.list.set(i,cal.list.get(i+1));
                 }
-                list.remove(list.size()-1);
+                cal.list.remove(cal.list.size()-1);
             }
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             if(sc.next().equals("inquiry")){
-                for(int i : list){
+                for(int i : cal.list){
                     System.out.print(i+" ");
                 }
                 System.out.println();
