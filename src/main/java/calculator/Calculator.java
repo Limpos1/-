@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    private List<Integer> list = new ArrayList<Integer>();
+
+    private List<Integer> list;
+
+    public Calculator() {
+        this.list = new ArrayList<Integer>(); // 생성자를 통한 초기화
+    }
 
     public int calculate(int a, int b,char operator)throws Exception  {// throws Exception -> 이 메서드를 호출한 곳에서 오류를 처리해야 한다는 의미
         switch (operator) {
