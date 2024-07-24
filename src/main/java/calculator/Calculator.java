@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    List<Integer> list = new ArrayList<Integer>();
+    private List<Integer> list = new ArrayList<Integer>();
 
     public int calculate(int a, int b,char operator)throws Exception  {// throws Exception -> 이 메서드를 호출한 곳에서 오류를 처리해야 한다는 의미
         switch (operator) {
@@ -31,6 +31,21 @@ public class Calculator {
                 throw new Exception("사칙 연산 기호가 아닙니다 (+, -, *, /) 중 하나를 입력하세요");// 오류 메시지를 만들어서 호출한 곳으로 보낸다.
             }
         }
+
         return list.get(list.size()-1);
+    }
+
+    public int Getter(int index){
+        return list.get(index);
+    }
+    public void Setter(){
+        if(list.isEmpty()){
+            System.out.println("이미 비어있습니다.");
+            return;
+        }
+        for(int i=0;i<list.size()-1;i++){
+            list.set(i,list.get(i+1));
+        }
+        list.remove(list.size()-1);
     }
 }
