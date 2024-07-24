@@ -47,4 +47,11 @@ public class Calculator {
             list.set(index,num);
         }
     }
+
+    public void removeResult(){
+        for(int i=0;i<list.size()-1;i++){
+            list.set(i,list.get(i+1));
+        }
+        list.remove(list.size()-1);
+    }
 }

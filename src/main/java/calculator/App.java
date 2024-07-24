@@ -39,11 +39,11 @@ public class App {
             index++; // 결과 리스트에 얼마나 저장됐는지 확인하기 위함
 
             
-//            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-//            if(sc.next().equals("remove")){
-//                cal.Setter();
-//                index--; // 삭제했으므로 인덱스가 하나 줄어든다.
-//            }
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            if(sc.next().equals("remove")){
+                cal.removeResult(); // 삭제 메서드 활용
+                index--; // 삭제했으므로 인덱스가 하나 줄어든다.
+            }
 
             System.out.println("인덱스와 값을 넣고 수정하려면 y를 누르세요: ");
             if(sc.next().charAt(0)=='y'){
