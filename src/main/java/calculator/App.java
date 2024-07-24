@@ -17,7 +17,7 @@ public class App {
                 a = sc.nextInt();
                 System.out.print("두 번째 숫자를 입력하세요: ");
                 b = sc.nextInt();
-            }catch(InputMismatchException e){
+            }catch(InputMismatchException e){ // 두 정수 입력
                 System.out.println("올바른 숫자를 입력하세요.");
                 sc.next(); // sc.nextInt()는 버퍼에 입력된 값을 소비시키지 않으므로 sc.next()가 다 처리 후 소비시켜 버퍼를 비워주는 역할을 한다.
                 continue;
@@ -58,10 +58,17 @@ public class App {
                     continue;
                 }
             }
+            
             System.out.println("결과: "+result);
-            if(index<10){
-                arrays[index]=result;
+            if(index<10) {
+                arrays[index] = result;
                 index++;
+            }
+            else{
+                for(int i=0;i<9;i++){ // 배열의 크기 - 1번만큼 반복
+                    arrays[i]=arrays[i+1];
+                }
+                arrays[9] = result;
             }
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             if(sc.next().equals("exit")){
