@@ -6,10 +6,13 @@ public class App {
 
     public static void main(String[] args) {
         int a,b;
+        char operator;
         Scanner sc = new Scanner(System.in);
         System.out.print("첫 번째 숫자를 입력하세요: ");
         a = sc.nextInt();
-        System.out.println("두 번째 숫자를 입력하세요: ");
+        System.out.print("두 번째 숫자를 입력하세요: ");
         b = sc.nextInt();
+        System.out.print("사칙연산 기호를 입력하세요: ");
+        operator = sc.next().charAt(0);
     }
 }
