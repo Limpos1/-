@@ -1,13 +1,15 @@
 package calculator;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
         int a,b;
-        int[] arrays = new int[10];
+        List<Integer> list = new ArrayList<>();
         int index=0;
         char operator;
         Scanner sc = new Scanner(System.in);
@@ -60,16 +62,16 @@ public class App {
             }
             
             System.out.println("결과: "+result);
-            if(index<10) {
-                arrays[index] = result;
-                index++;
-            }
-            else{
-                for(int i=0;i<9;i++){ // 배열의 크기 - 1번만큼 반복
-                    arrays[i]=arrays[i+1];
+            list.add(result);
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            if(sc.next().equals("remove")){
+                for(int i=0; i<list.size()-1; i++){
+                    list.set(i,list.get(i+1));
                 }
-                arrays[9] = result;
+                list.remove(list.size()-1);
             }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             if(sc.next().equals("exit")){
                 break;
