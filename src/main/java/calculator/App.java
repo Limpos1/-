@@ -10,6 +10,7 @@ public class App {
     public static void main(String[] args) {
         Calculator cal = new Calculator();
         int a,b,result;
+        int index=0;
         char operator;
         Scanner sc = new Scanner(System.in);
         while(true){
@@ -35,19 +36,34 @@ public class App {
             }
             
             System.out.println("결과: "+result);
+            index++; // 결과 리스트에 얼마나 저장됐는지 확인하기 위함
 
-            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-            if(sc.next().equals("remove")){
-                for(int i=0; i<cal.list.size()-1; i++){
-                    cal.list.set(i,cal.list.get(i+1));
+            
+//            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+//            if(sc.next().equals("remove")){
+//                cal.Setter();
+//                index--; // 삭제했으므로 인덱스가 하나 줄어든다.
+//            }
+
+            System.out.println("인덱스와 값을 넣고 수정하려면 y를 누르세요: ");
+            if(sc.next().charAt(0)=='y'){
+                System.out.println("(첫 번째 인덱스는 1입니다!!!!!)수정 할 인덱스: ");
+                int temp = sc.nextInt();
+                System.out.println("수정 할 값");
+                int temp2 = sc.nextInt();
+                try{
+                    cal.Setter(temp, temp2);
                 }
-                cal.list.remove(cal.list.size()-1);
+                catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
             }
+
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             if(sc.next().equals("inquiry")){
-                for(int i : cal.list){
-                    System.out.print(i+" ");
+                for(int i=0;i<index;i++){
+                    System.out.print(cal.Getter(i)+" "); //Getter 메서드 사용
                 }
                 System.out.println();
             }
