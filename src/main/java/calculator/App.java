@@ -7,6 +7,8 @@ public class App {
 
     public static void main(String[] args) {
         int a,b;
+        int[] arrays = new int[10];
+        int index=0;
         char operator;
         Scanner sc = new Scanner(System.in);
         while(true){
@@ -57,6 +59,10 @@ public class App {
                 }
             }
             System.out.println("결과: "+result);
+            if(index<10){
+                arrays[index]=result;
+                index++;
+            }
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             if(sc.next().equals("exit")){
                 break;
