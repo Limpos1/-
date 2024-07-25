@@ -1,6 +1,6 @@
 package calculator;
 
-public class SubtractOperator {
+public class SubtractOperator implements Operator {
     private int a=0;
     private int b=0;
 
@@ -8,6 +8,8 @@ public class SubtractOperator {
         this.a = a;
         this.b = b;
     }
+
+    @Override
     public int operator(){
         return this.a - this.b;
     }
