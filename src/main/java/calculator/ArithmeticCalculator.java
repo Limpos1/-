@@ -5,22 +5,26 @@ public class ArithmeticCalculator extends Calculator{
         int res = 0;
         switch (operator) {
             case '+':{
-                res = (a+b);
+                AddOperator add = new AddOperator(a,b);
+                res = add.operator();
                 break;
             }
             case '-':{
-                res = (a-b);
+                SubtractOperator sub = new SubtractOperator(a,b);
+                res = sub.operator();
                 break;
             }
             case '*':{
-                res =(a*b);
+                MultiplyOperator mul = new MultiplyOperator(a,b);
+                res =mul.operator();
                 break;
             }
             case '/':{
                 if(b==0){
                     throw new Exception("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다."); // 오류 메시지를 만들어서 호출한 곳으로 보낸다.
                 }
-                res =(a/b);
+                DivideOperator div = new DivideOperator(a,b);
+                res =div.operator();
                 break;
             }
             default:{
@@ -39,4 +43,12 @@ public class ArithmeticCalculator extends Calculator{
         super.Setter(num);
     }
 
+    public void inquiryResults(){
+        super.inquiryResults();
+    }
+    public void removeResult(){
+        super.removeResult();
+    }
+
 }
+
