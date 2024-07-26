@@ -5,8 +5,8 @@ import java.util.Objects;
 public class ArithmeticCalculator extends Calculator{
 
 
-    public int calculate(int a, int b,char operator)throws Exception  {// throws Exception -> 이 메서드를 호출한 곳에서 오류를 처리해야 한다는 의미
-        int res = 0;
+    public <T extends Number, U extends Number> Number calculate(T a, U b,char operator)throws Exception  {// throws Exception -> 이 메서드를 호출한 곳에서 오류를 처리해야 한다는 의미
+        Number res = 0;
 
         OperatorType type;
         type = OperatorType.getOperatorType(operator);
@@ -32,7 +32,7 @@ public class ArithmeticCalculator extends Calculator{
                     break;
                 }
                 case DIV:{
-                    if(b==0){
+                    if(b instanceof Integer && b.intValue()==0 || (b instanceof Double && b.doubleValue()==0)){
                         throw new Exception("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다."); // 오류 메시지를 만들어서 호출한 곳으로 보낸다.
                     }
                     DivideOperator div = new DivideOperator(a,b);
@@ -40,7 +40,7 @@ public class ArithmeticCalculator extends Calculator{
                     break;
                 }
                 case MOD:{
-                    if(b==0){
+                    if(b instanceof Integer && b.intValue()==0 || (b instanceof Double && b.doubleValue()==0)){
                         throw new Exception("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다."); // 오류 메시지를 만들어서 호출한 곳으로 보낸다.
                     }
                     ModOperator mod = new ModOperator(a,b);
@@ -53,10 +53,6 @@ public class ArithmeticCalculator extends Calculator{
             }
 
         return res;
-    }
-
-    public int Getter(int index){
-        return super.Getter(index);
     }
 
     public void Setter(int num){

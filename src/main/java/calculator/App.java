@@ -9,27 +9,50 @@ public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Number result;
+        String input = "";
+        Number a,b;
         ArithmeticCalculator calculator = new ArithmeticCalculator(); // 사칙연산을 담당하는 객체
         CircleCalculator circleCalculator = new CircleCalculator(); // 원의 넓이를 담당하는 객체
-        int a,b,result,flag;
+        int flag;
         int index=0;
         double diameter;
         char operator;
+
         while(true){
             System.out.print("사칙 연산 1번, 원의 넓이 구하기 2번: ");
             flag = sc.nextInt();
             if(flag == 1){
-                try{
+
+                //--------------------------------------------------------------------------------------------------------------------------
+
+                // 현재 블럭은 각각
+                try {
                     System.out.print("첫 번째 숫자를 입력하세요: ");
-                    a = sc.nextInt();
-                    System.out.print("두 번째 숫자를 입력하세요: ");
-                    b = sc.nextInt();
-                }catch(InputMismatchException e){ // 두 정수 입력
-                    System.out.println("올바른 숫자를 입력하세요.");
-                    sc.next(); // sc.nextInt()는 버퍼에 입력된 값을 소비시키지 않으므로 sc.next()가 다 처리 후 소비시켜 버퍼를 비워주는 역할을 한다.
-                    continue;
+                    input = sc.next(); // .nextLine()하면 개행문자까지 버퍼에 입력되어서 밑에서 숫자로 변환하는데에 문제가 발생한다. 그러므로 개행문자를 받지 않는 next를 사용한 것이다.
+                    a = Integer.parseInt(input);
+                }catch (NumberFormatException e){ // NumberFormatException == 정수형으로 변환 실패 시 발생하는 오류, 곧바로 실수로 변환을 시도한다.
+                    try {
+                        a = Double.parseDouble(input);
+                    }catch (NumberFormatException e2){ // 실수로도 변환 실패하면 허용되지 않은 값이니 예외처리
+                        System.out.println("올바른 숫자를 입력하세요.");
+                        continue;
+                    }
                 }
 
+                try {
+                    System.out.print("두 번째 숫자를 입력하세요: ");
+                    input = sc.next(); // .nextLine()하면 개행문자까지 버퍼에 입력되어서 밑에서 숫자로 변환하는데에 문제가 발생한다. 그러므로 개행문자를 받지 않는 next를 사용한 것이다.
+                    b = Integer.parseInt(input);
+                }catch (NumberFormatException e){ // NumberFormatException == 정수형으로 변환 실패 시 발생하는 오류, 곧바로 실수로 변환을 시도한다.
+                    try {
+                        b = Double.parseDouble(input);
+                    }catch (NumberFormatException e2){ // 실수로도 변환 실패하면 허용되지 않은 값이니 예외처리
+                        System.out.println("올바른 숫자를 입력하세요.");
+                        continue;
+                    }
+                }
+                //----------------------------------------------------------------------------------------------------------
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 operator = sc.next().charAt(0);
 
