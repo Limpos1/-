@@ -52,8 +52,6 @@ public class ArithmeticCalculator extends Calculator{
                 }
             }
 
-
-
         return res;
     }
 
