@@ -10,7 +10,7 @@ public class ArithmeticCalculator extends Calculator{
 
         OperatorType type;
         type = OperatorType.getOperatorType(operator);
-        if(type == null){
+        if(type == null){ // switch문은 null값을 처리하지 못하고 오류가 나므로 if에서 검사한다.
             throw new Exception("사칙 연산 기호가 아닙니다 (+, -, *, /, %) 중 하나를 입력하세요");
         }
 
