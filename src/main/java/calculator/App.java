@@ -11,7 +11,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         Number result;
         String input = "";
-        Number a,b;
+        Number a,b,c;
         ArithmeticCalculator calculator = new ArithmeticCalculator(); // 사칙연산을 담당하는 객체
         CircleCalculator circleCalculator = new CircleCalculator(); // 원의 넓이를 담당하는 객체
         int flag;
@@ -77,6 +77,23 @@ public class App {
                 if(sc.next().equals("inquiry")){
                     calculator.inquiryResults();
                 }
+
+                try{
+                    System.out.println("숫자를 입력 시 그 숫자 보다 큰 리스트 출력: ");
+                    input = sc.next(); // Number형이기 때문에 먼저 문자열로 입력받고 Interger형 또는 Double형으로 변환을 시도한다.
+                    c = Integer.parseInt(input);
+                    calculator.printbignums((Integer) c);
+                }catch (NumberFormatException e){
+                    try{
+                        c = Double.parseDouble(input);
+                        calculator.printbignums((Double) c);
+                    }
+                    catch (NumberFormatException e2){
+                        System.out.println("올바른 입력이 아닙니다.");
+                    }
+
+                }
+
             } // 1번 선택 시 사칙연산 개시
             else if(flag==2){
                 System.out.print("원의 반지름을 입력하시오: ");

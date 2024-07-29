@@ -6,8 +6,8 @@ import java.util.List;
 public class Calculator {
 
     //-------------------------------------------------------------------------------------------
-    private final List<Number> list;
-    private final List<Double> circlelist;
+    public final List<Number> list;
+    public final List<Double> circlelist;
     // final 사용 이유 : 참조형 변수의 경우 final을 사용하면 한번 할당한 주소를 변경하지 못하게한다. 밑에 생성자에서 할당을 받으면 이제 어디서도 이 참조형 변수가 바라보는 주소를 바꿀 수 없다.
     // 단, final을 사용했다고 해도 내부의 내용(list의 요소들)은 변경 할 수 있다. 단지 다른곳에서 "list = new ArrayList<>()"같이 새로운 주소를 절대 참조하지 못하게 할 뿐이다.
     //-------------------------------------------------------------------------------------------

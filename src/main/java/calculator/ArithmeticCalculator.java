@@ -1,8 +1,27 @@
 package calculator;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ArithmeticCalculator extends Calculator{
+
+    public void printbignums(Integer a){ // Integer 형으로 받았을 때
+        Predicate<Number> bignum = num -> num.intValue() > a;
+        List<Number> bignumlist = list.stream()
+                .filter(bignum)
+                .collect(Collectors.toList());
+        System.out.println(bignumlist);
+    }
+
+    public void printbignums(Double a){ // Double형으로 받았을 때
+        Predicate<Number> bignum = num -> num.doubleValue() > a;
+        List<Number> bignumlist = list.stream()
+                .filter(bignum)
+                .collect(Collectors.toList());
+        System.out.println(bignumlist);
+    }
 
 
     public <T extends Number, U extends Number> Number calculate(T a, U b,char operator)throws Exception  {// throws Exception -> 이 메서드를 호출한 곳에서 오류를 처리해야 한다는 의미
